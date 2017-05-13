@@ -1,0 +1,1 @@
+# cordova-plugin-azure-adb2c
