@@ -3,7 +3,7 @@
     "version": "0.8.0",
     "description": "Provides Microsoft Azure Active Directory (ADAL) OAuth client.",
     "cordova": {
-        "id": "cordova-plugin-adal-adb2c",
+        "id": "cordova-plugin-azure-adb2c",
         "platforms": [
             "android"
         ]
@@ -25,7 +25,7 @@
         "microsoft",
         "azure",
         "adal",
-        "b2c"
+        "b2c",
         "activedirectory",
         "ecosystem:cordova",
         "cordova-android",
