@@ -40,7 +40,7 @@ var cordovaBridge = {
             deferred.reject(error);
         };
 
-        exec(win, fail, "ADALProxy", nativeMethodName, args);
+        exec(win, fail, "AzureADB2CProxy", nativeMethodName, args);
 
         return deferred;
     }
