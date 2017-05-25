@@ -1,4 +1,5 @@
-// Copyright (c) Microsoft Open Technologies, Inc.  All rights reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information.
+// Copyright (c) Yaosee Software Technologies.  All rights reserved.
+// Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information.
 
 /*global module, require*/
 
@@ -14,76 +15,39 @@ var TokenCache = require('./TokenCache');
  * for this authority URL in native proxy or creates a new one if it doesn't exist.
  * Corresponding native context will be created at first time when it will be needed.
  *
- * @param   {String}  authority         Authority url to send code and token requests
- * @param   {Boolean} validateAuthority Validate authority before sending token request
- *                                      When context is being created syncronously using this constructor
- *                                      validateAuthority in native context will be disabled to prevent
- *                                      context initialization failure
- *
+ * @param   {String}  tenantId          MS b2c tenant id
+ * @param   {String}  clientId          MS b2c client id
+ * @param   {String}  redirectUrl       MS b2c redirect url
  * @returns {Object}  Newly created authentication context.
  */
-function AuthenticationContext(authority, validateAuthority) {
+function AuthenticationContext(tenantId, clientId, redirectUrl) {
 
-    checkArgs('s*', 'AuthenticationContext', arguments);
+    checkArgs('sss', 'AuthenticationContext', arguments);
 
-    if (validateAuthority !== false) {
-        validateAuthority = true;
-    }
-
-    this.authority = authority;
-    this.validateAuthority = validateAuthority;
+    this.tenantId = tenantId;
+    this.clientId = clientId;
+    this.redirectUrl = redirectUrl;
     this.tokenCache = new TokenCache(this);
 }
 
 /**
- * Constructs context asynchronously to use with known authority to get the token.
- * It reuses existing context for this authority URL in native proxy or creates a new one if it doesn't exist.
+ * Acquires token using interactive flow, by sign in or sign up.
+ * It always shows UI and skips token from cache.
  *
- * @param   {String}   authority         Authority url to send code and token requests
- * @param   {Boolean}  validateAuthority Validate authority before sending token request. True by default
- *
- * @returns {Promise}  Promise either fulfilled with newly created authentication context or rejected with error
- */
-AuthenticationContext.createAsync = function (authority, validateAuthority) {
-
-    checkArgs('s*', 'AuthenticationContext.createAsync', arguments);
-
-    var d = new Deferred();
-
-    if (validateAuthority !== false) {
-        validateAuthority = true;
-    }
-
-    bridge.executeNativeMethod('createAsync', [authority, validateAuthority]).then(function () {
-        d.resolve(new AuthenticationContext(authority, validateAuthority));
-    }, function(err) {
-        d.reject(err);
-    });
-
-    return d;
-};
-
-/**
- * Acquires token using interactive flow. It always shows UI and skips token from cache.
- *
- * @param   {String}  resourceUrl Resource identifier
- * @param   {String}  clientId    Client (application) identifier
- * @param   {String}  redirectUrl Redirect url for this application
- * @param   {String}  userId      User identifier (optional)
- * @param   {String}  extraQueryParameters
- *                                Extra query parameters (optional)
- *                                Parameters should be escaped before passing to this method (e.g. using 'encodeURI()')
+ * @param   {String}  policy   Resource identifier
+ * @param   {String}  scope    Client (application) identifier
+ * @param   {String}  userId   Optional login hint. This will determine if we are directed to sign in or sign up.
  *
  * @returns {Promise} Promise either fulfilled with AuthenticationResult object or rejected with error
  */
-AuthenticationContext.prototype.acquireTokenAsync = function (tenantId, clientId, redirectUrl, policy) {
+AuthenticationContext.prototype.acquireTokenAsync = function (policy, scope, userId) {
 
-    checkArgs('ssss', 'AuthenticationContext.acquireTokenAsync', arguments);
+    checkArgs('ssS', 'AuthenticationContext.acquireTokenAsync', arguments);
 
     var d = new Deferred();
 
-    bridge.executeNativeMethod('acquireTokenAsync', [tenantId, clientId, redirectUrl,
-        policy])
+    bridge.executeNativeMethod('acquireTokenAsync', [this.tenantId, this.clientId, this.redirectUrl,
+                                                     policy, scope, userId])
     .then(function(authResult){
         d.resolve(new AuthenticationResult(authResult));
     }, function(err) {
@@ -94,30 +58,11 @@ AuthenticationContext.prototype.acquireTokenAsync = function (tenantId, clientId
 };
 
 /**
- * Acquires token WITHOUT using interactive flow. It checks the cache to return existing result
- * if not expired. It tries to use refresh token if available. If it fails to get token without
- * displaying UI it will fail. This method guarantees that no UI will be shown to user.
- *
- * @param   {String}  resourceUrl Resource identifier
- * @param   {String}  clientId    Client (application) identifier
- * @param   {String}  userId      User identifier (optional)
- *
- * @returns {Promise} Promise either fulfilled with AuthenticationResult object or rejected with error
+ * Redirects a user for editing his or her profile.
+ * @param {String} policy
  */
-AuthenticationContext.prototype.acquireTokenSilentAsync = function (resourceUrl, clientId, userId) {
-
-    checkArgs('ssS', 'AuthenticationContext.acquireTokenSilentAsync', arguments);
-
-    var d = new Deferred();
-
-    bridge.executeNativeMethod('acquireTokenSilentAsync', [this.authority, this.validateAuthority, resourceUrl, clientId, userId])
-    .then(function(authResult){
-        d.resolve(new AuthenticationResult(authResult));
-    }, function(err) {
-        d.reject(err);
-    });
-
-    return d;
+AuthenticationContext.prototype.editProfileAsync = function (policy) {
+    checkArgs('s', 'AuthenticationContext.editProfileAsync', arguments);    
 };
 
 module.exports = AuthenticationContext;
