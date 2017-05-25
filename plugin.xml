@@ -21,6 +21,9 @@
         <engine name="cordova" version=">=5.4.0" />
     </engines>
 
+    <!-- We split the resource strings into two parts: one group specific to one use and
+         one independent of any use. The one specic to uses will be passed as parameters. -->
+
     <js-module name="utility" src="www/utility.js">
         <runs />
     </js-module>
@@ -40,6 +43,10 @@
     </js-module>
 
     <platform name="android">
+        <!-- B2C common settings defined in a esource file -->
+        <!-- TODO: Maybe we need to use a name which is most likely unique in the target. -->
+        <resource-file src="src/android/adal-b2c-settings.xml" target="res/values/adal-b2c-settings.xml" />
+      
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AzureADB2CProxy">
                 <param name="android-package" value="com.peeroffers.identity.CordovaIdentityPlugin"/>
@@ -53,6 +60,5 @@
             <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
             <uses-permission android:name="android.permission.USE_CREDENTIALS" />
         </config-file>
-
     </platform>
 </plugin>
