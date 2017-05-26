@@ -45,13 +45,21 @@
     <platform name="android">
         <!-- B2C common settings defined in a esource file -->
         <!-- TODO: Maybe we need to use a name which is most likely unique in the target. -->
-        <resource-file src="src/android/adal-b2c-settings.xml" target="res/values/adal-b2c-settings.xml" />
-      
+        <resource-file src="src/android/azure_adb2c_settings.xml" target="res/values/azure_adb2c_settings.xml" />
+        <!-- layout -->
+        <resource-file src="src/android/zaure_adb2c_token_activity.xml" target="res/layout/azure_adb2c_token_activity.xml" />
+        <!-- image -->
+        <resource-file src="src/android/zaure_adb2c_auth_logo.xml" target="res/drawable/azure_adb2c_auth_logo.xml" />
+       
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AzureADB2CProxy">
                 <param name="android-package" value="com.peeroffers.identity.CordovaIdentityPlugin"/>
             </feature>
         </config-file>
+
+        <framework src="com.android.support:support-v4:+" />
+        <framework src="com.android.support:appcompat-v7:+" />
+        <framework src="com.android.support:design:22.2+" />        
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.INTERNET" />
