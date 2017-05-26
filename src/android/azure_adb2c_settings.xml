@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="b2c_name">B2C</string>
+    <string name="b2c_discovery_uri" translatable="false">https://login.microsoftonline.com/%1$s/v2.0/.well-known/openid-configuration?p=%2$s</string>
+    <bool name="b2c_enabled">true</bool>
+
+    <string name="b2c_auth_granted">Authorization granted</string>
+    <string name="b2c_auth_content_description">Auth logo</string>
+
+    <string name="b2c_exchange_notification">Exchanging code for token</string>
+    <string name="b2c_authorization_failed">Authorization failed</string>
+    <string name="b2c_exchange_complete">Exchange completed successfully</string>
+    <string name="b2c_refresh_failed">Token refresh failed</string>
+</resources>
