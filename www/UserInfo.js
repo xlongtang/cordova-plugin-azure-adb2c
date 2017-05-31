@@ -15,6 +15,7 @@ function UserInfo(userInfo) {
     this.userId = userInfo.userId || userInfo.uniqueId;
     this.familyName = userInfo.familyName;
     this.givenName = userInfo.givenName;
+    this.email = userInfo.email;
     this.identityProvider = userInfo.identityProvider;
     this.passwordChangeUrl = userInfo.passwordChangeUrl; //uri
     this.passwordExpiresOn = userInfo.passwordExpiresOn ? new Date(userInfo.passwordExpiresOn) : null;
@@ -50,6 +51,7 @@ UserInfo.fromJWT = function function_name (jwtToken) {
     result.displayableId = token.name;
     result.familyName = token.family_name;
     result.givenName = token.given_name;
+    result.email = (token.emails && token.emails.length > 0) ? token.emails[0] : '';
     // Due to https://msdn.microsoft.com/en-us/library/azure/dn195587.aspx this value is
     // identical to the value of the Issuer claim unless the user account is in a different tenant than the issuer.
     // In case when identity provider is not specified in token, we use 'issuer' field ('iss' claim) of token

@@ -47,9 +47,9 @@
         <!-- TODO: Maybe we need to use a name which is most likely unique in the target. -->
         <resource-file src="src/android/azure_adb2c_settings.xml" target="res/values/azure_adb2c_settings.xml" />
         <!-- layout -->
-        <resource-file src="src/android/zaure_adb2c_token_activity.xml" target="res/layout/azure_adb2c_token_activity.xml" />
+        <resource-file src="src/android/azure_adb2c_token_activity.xml" target="res/layout/azure_adb2c_token_activity.xml" />
         <!-- image -->
-        <resource-file src="src/android/zaure_adb2c_auth_logo.xml" target="res/drawable/azure_adb2c_auth_logo.xml" />
+        <resource-file src="src/android/azure_adb2c_auth_logo.xml" target="res/drawable/azure_adb2c_auth_logo.xml" />
        
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AzureADB2CProxy">
