@@ -65,4 +65,27 @@ AuthenticationContext.prototype.editProfileAsync = function (policy) {
     checkArgs('s', 'AuthenticationContext.editProfileAsync', arguments);    
 };
 
+/**
+ * Logouts a user
+ * @param {String} policy
+ * @returns {Promise} 
+ */
+AuthenticationContext.prototype.logoutAsync = function (policy) {
+    checkArgs('s', 'AuthenticationContext.logoutAsync', arguments);
+
+    var d = new Deferred();
+
+    bridge.executeNativeMethod('logoutAsync', [this.tenantId, this.clientId, this.redirectUrl, 
+                                               policy])
+    .then(function(res){
+        d.resolve(res);
+    }, function(err) {
+        d.reject(err);
+    });
+
+    return d;
+    
+};
+
+
 module.exports = AuthenticationContext;
