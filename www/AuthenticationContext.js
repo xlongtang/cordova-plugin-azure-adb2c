@@ -70,13 +70,13 @@ AuthenticationContext.prototype.editProfileAsync = function (policy) {
  * @param {String} policy
  * @returns {Promise} 
  */
-AuthenticationContext.prototype.logoutAsync = function (policy) {
-    checkArgs('s', 'AuthenticationContext.logoutAsync', arguments);
+AuthenticationContext.prototype.logoutAsync = function (policy, scope) {
+    checkArgs('ss', 'AuthenticationContext.logoutAsync', arguments);
 
     var d = new Deferred();
 
     bridge.executeNativeMethod('logoutAsync', [this.tenantId, this.clientId, this.redirectUrl, 
-                                               policy])
+                                               policy, scope])
     .then(function(res){
         d.resolve(res);
     }, function(err) {
