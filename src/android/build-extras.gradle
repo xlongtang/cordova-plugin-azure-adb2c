@@ -1,0 +1,3 @@
+dependencies {
+    compile 'net.openid:appauth:0.7.0'
+}
