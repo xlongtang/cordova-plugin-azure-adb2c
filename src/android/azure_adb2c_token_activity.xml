@@ -32,14 +32,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/b2c_auth_granted"
-                style="?android:actionBarTabTextStyle" />
+                style="@style/Base.TextAppearance.AppCompat.Title" />
 
             <Button
                 android:id="@+id/b2c_auth_confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/button_ok"
-                style="?android:actionButtonStyle" />
+                style="@style/Widget.AppCompat.Button" />
         </LinearLayout>
     </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

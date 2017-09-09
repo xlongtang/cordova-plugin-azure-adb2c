@@ -52,7 +52,7 @@ Licensed under the Apache License, Version 2.0.  See License.txt in the project 
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
       <activity android:label="@string/app_name"
                 android:name="com.peeroffers.identity.TokenActivity"
-                android:theme="@android:style/Theme.Holo.Light"
+                android:theme="@style/AppTheme.NoActionBar"
                 android:windowSoftInputMode="stateHidden">
       </activity>
     </config-file>
