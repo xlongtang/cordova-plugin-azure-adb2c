@@ -76,13 +76,14 @@ Licensed under the Apache License, Version 2.0.  See License.txt in the project 
 
     <!-- B2C common settings defined in a esource file -->
     <!-- TODO: Maybe we need to use a name which is most likely unique in the target. -->
-    <resource-file src="src/android/azure_adb2c_settings.xml" target="res/values/azure_adb2c_settings.xml" />
+    <resource-file src="src/android/settings.xml" target="res/values/azure_adb2c_settings.xml" />
     <!-- style -->
-    <resource-file src="src/android/azure_adb2c_styles.xml" target="res/values/azure_adb2c_styles.xml" />        
+    <resource-file src="src/android/colors.xml" target="res/values/azure_adb2c_colors.xml" />            
+    <resource-file src="src/android/styles.xml" target="res/values/azure_adb2c_styles.xml" />        
     <!-- layout -->
-    <resource-file src="src/android/azure_adb2c_token_activity.xml" target="res/layout/azure_adb2c_token_activity.xml" />
+    <resource-file src="src/android/token_activity.xml" target="res/layout/azure_adb2c_token_activity.xml" />
     <!-- image -->
-    <resource-file src="src/android/azure_adb2c_auth_logo.xml" target="res/drawable/azure_adb2c_auth_logo.xml" />
+    <resource-file src="src/android/auth_logo.xml" target="res/drawable/azure_adb2c_auth_logo.xml" />
 
   </platform>
 </plugin>
