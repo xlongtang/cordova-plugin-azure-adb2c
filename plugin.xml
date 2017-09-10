@@ -77,6 +77,8 @@ Licensed under the Apache License, Version 2.0.  See License.txt in the project 
     <!-- B2C common settings defined in a esource file -->
     <!-- TODO: Maybe we need to use a name which is most likely unique in the target. -->
     <resource-file src="src/android/azure_adb2c_settings.xml" target="res/values/azure_adb2c_settings.xml" />
+    <!-- style -->
+    <resource-file src="src/android/azure_adb2c_styles.xml" target="res/values/azure_adb2c_styles.xml" />        
     <!-- layout -->
     <resource-file src="src/android/azure_adb2c_token_activity.xml" target="res/layout/azure_adb2c_token_activity.xml" />
     <!-- image -->
