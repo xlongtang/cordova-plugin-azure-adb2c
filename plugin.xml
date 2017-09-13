@@ -85,6 +85,7 @@ Licensed under the Apache License, Version 2.0.  See License.txt in the project 
     <!-- image -->
     <resource-file src="src/android/auth_logo.xml" target="res/drawable/azure_adb2c_auth_logo.xml" />
 
+    <source-file src="src/android/com/peeroffers/identity/CordovaIdentityPlugin.java" target-dir="src/com/peeroffers/identity" />    
     <source-file src="src/android/com/peeroffers/identity/AuthenticationResult.java" target-dir="src/com/peeroffers/identity" />
     <source-file src="src/android/com/peeroffers/identity/DefaultGlobalR.java" target-dir="src/com/peeroffers/identity" />
     <source-file src="src/android/com/peeroffers/identity/DefaultIdentityProvider.java" target-dir="src/com/peeroffers/identity" />
