@@ -92,10 +92,10 @@ public class DefaultIdentityProvider implements IIdentityProvider {
 
         this.name = name;
         this.mEnabled = enabled;
-        this.mDiscoveryEndpointRes = NOT_SPECIFIED;
+        this.mDiscoveryEndpointRes = discoveryEndpointRes;
         this.mAuthEndpointRes = authEndpointRes;
         this.mTokenEndpointRes = tokenEndpointRes;
-        this.mRegistrationEndpointRes = NOT_SPECIFIED;
+        this.mRegistrationEndpointRes = registrationEndpointRes;
         this.mLogoutEndpointRes = logoutEndpointRes;
 
         this.mTenant = tenant;

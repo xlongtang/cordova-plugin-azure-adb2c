@@ -2,6 +2,10 @@ package com.peeroffers.identity;
 
 import android.support.annotation.NonNull;
 
+import com.yaoseetech.identity.DefaultIdentityProvider;
+import com.yaoseetech.identity.IGlobalR;
+import com.yaoseetech.identity.IIdentityProvider;
+
 /**
  * Created by xlongtang on 5/15/2017.
  */

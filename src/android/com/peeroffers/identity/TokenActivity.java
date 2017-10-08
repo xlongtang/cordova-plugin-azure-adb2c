@@ -16,6 +16,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.yaoseetech.identity.AuthenticationResult;
+import com.yaoseetech.identity.DefaultGlobalR;
+import com.yaoseetech.identity.IGlobalR;
+
 import net.openid.appauth.AuthState;
 import net.openid.appauth.AuthorizationException;
 import net.openid.appauth.AuthorizationRequest;
