@@ -1,4 +1,4 @@
-package com.peeroffers.identity;
+package com.yaoseetech.identity;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -92,9 +92,9 @@ public class DefaultIdentityProvider implements IIdentityProvider {
 
         this.name = name;
         this.mEnabled = enabled;
-        this.mDiscoveryEndpointRes = discoveryEndpointRes;
-        this.mAuthEndpointRes = NOT_SPECIFIED;
-        this.mTokenEndpointRes = NOT_SPECIFIED;
+        this.mDiscoveryEndpointRes = NOT_SPECIFIED;
+        this.mAuthEndpointRes = authEndpointRes;
+        this.mTokenEndpointRes = tokenEndpointRes;
         this.mRegistrationEndpointRes = NOT_SPECIFIED;
         this.mLogoutEndpointRes = logoutEndpointRes;
 

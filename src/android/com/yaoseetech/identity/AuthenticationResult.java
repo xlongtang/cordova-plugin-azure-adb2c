@@ -1,4 +1,4 @@
-package com.peeroffers.identity;
+package com.yaoseetech.identity;
 
 import net.openid.appauth.AuthState;
 

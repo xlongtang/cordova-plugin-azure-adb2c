@@ -1,4 +1,4 @@
-package com.peeroffers.identity;
+package com.yaoseetech.identity;
 
 import android.content.Context;
 import android.net.Uri;
